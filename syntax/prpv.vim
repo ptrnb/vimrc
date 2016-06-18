@@ -1,5 +1,5 @@
 " Vim syntax file
-" Language: IBM/NBNCo Herrminnator properties syntax
+" Language: Properties syntax
 " Maintainer: Peter Brown
 " Latest: 
 
