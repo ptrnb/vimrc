@@ -214,6 +214,7 @@ map Q gq
 " nnoremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
 " nnoremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
 " vnoremap <leader>y "*ygv
+set clipboard=unnamed
 vnoremap <leader>y :call system("pbcopy", getreg("\""))<CR>
 nnoremap <leader>p :call setreg("\"", system("pbpaste"))<CR>p
 
