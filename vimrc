@@ -144,6 +144,9 @@ nnoremap <leader>w :w!
 "Change case
 inoremap <leader>u <esc>mzgUiw`za
 
+"Stop # comments moving to first column
+inoremap # X# 
+
 "Toggle search highlight
 nnoremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
