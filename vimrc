@@ -145,7 +145,7 @@ nnoremap <leader>w :w!
 inoremap <leader>u <esc>mzgUiw`za
 
 "Stop # comments moving to first column
-inoremap # X# 
+inoremap # x#
 
 "Toggle search highlight
 nnoremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
