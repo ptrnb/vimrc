@@ -1,5 +1,5 @@
 " My vimrc
-" Author: Peter Brown 
+" Author: Peter Brown
 "         With thanks to Steve Losh
 "         http://learnvimscriptthehardway.stevelosh.com
 "
@@ -80,6 +80,21 @@ set hlsearch
 
 " Toggle paste
 set pastetoggle=<F2>
+
+if &term =~ "xterm.*"
+    let &t_ti = &t_ti . "\e[?2004h"
+    let &t_te = "\e[?2004l" . &t_te
+    function XTermPasteBegin(ret)
+        set pastetoggle=<Esc>[201~
+        set paste
+        return a:ret
+    endfunction
+    map <expr> <Esc>[200~ XTermPasteBegin("i")
+    imap <expr> <Esc>[200~ XTermPasteBegin("")
+    vmap <expr> <Esc>[200~ XTermPasteBegin("c")
+    cmap <Esc>[200~ <nop>
+    cmap <Esc>[201~ <nop>
+endif
 
 " Set timeout for key mappings
 set notimeout
@@ -651,7 +666,7 @@ if has("autocmd")
         autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
     augroup END
     " }}}
-endif " has("autocmd") 
+endif " has("autocmd")
 " }}}
 " Plugin settings {{{
 " Toggle NERDTree {{{
@@ -729,7 +744,7 @@ if has("gui_running")
 endif
 
 " Insert a table headers separator line below the current line,
-" -- adjusted to the current line as headers line 
+" -- adjusted to the current line as headers line
 nnoremap <F4>t yyp:s/\v\S.{-}\ze(\s{2}\S\|$)/\=substitute(submatch(0),'.','-','g')/g<CR> :set nohls<cr>
 " ...or above the current line for a headerless table
 nnoremap <F4>T yyP:s/\v\S.{-}\ze(\s{2}\S\|$)/\=substitute(submatch(0),'.','-','g')/g<CR> :set nohls<cr>
