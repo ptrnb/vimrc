@@ -53,7 +53,13 @@ set autoread
 set backspace=indent,eol,start
 set laststatus=2
 set number
+set relativenumber
 set numberwidth=7
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 set undofile
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
 			" than 50 lines of registers
@@ -154,6 +160,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+
+let g:loaded_syntastic_java_javac_checker = 1
 
 " Matchit
 " :runtime macros/matchit.vim
@@ -424,12 +433,12 @@ vnoremap # :<c-u>call <sid>vsetsearch()<cr>??<cr><c-o>
 " let g:Powerline_theme = 'solarized'
 " let g:Powerline_colorscheme = 'solarized'
 
-if has("gui_running")
-    let g:Powerline_symbols = 'fancy'
-else
-    let g:Powerline_symbols = 'compatible'
-endif
-let g:Powerline_theme = 'solarized256'
+" if has("gui_running")
+    " let g:Powerline_symbols = 'fancy'
+" else
+    " let g:Powerline_symbols = 'compatible'
+" endif
+" let g:Powerline_theme = 'solarized256'
 
 " NerdComment settings
 :let NERDSpaceDelims=1
