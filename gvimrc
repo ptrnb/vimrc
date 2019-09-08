@@ -1,5 +1,6 @@
 " set guifont=Menlo:h12
-set guifont=Menlo\ for\ Powerline:h11
+set macligatures
+set guifont=Fira\ Code:h12
 set antialias
 set linespace=6
 colorscheme lucius
